@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um encontro especial ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:22px;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:linear-gradient(145deg,#ffe1ec,#ffc3da 55%,#fff0f5);color:#8f2452;overflow-x:hidden}.heart{position:fixed;opacity:.25;font-size:32px;pointer-events:none;animation:float 8s ease-in-out infinite}.heart:nth-child(1){left:10%;top:12%}.heart:nth-child(2){right:12%;top:20%;animation-delay:-3s}.heart:nth-child(3){left:20%;bottom:12%;animation-delay:-5s}@keyframes float{50%{transform:translateY(-25px) rotate(12deg)}}.card{position:relative;width:min(100%,440px);background:#fffdfef0;border:1px solid #fff;border-radius:28px;box-shadow:0 20px 55px #b33d6a30;text-align:center;padding:38px 25px}.emoji{font-size:56px;margin-bottom:12px}h1{font-size:clamp(25px,6vw,34px);line-height:1.25;margin:0 0 12px}p{font-size:16px;line-height:1.5;color:#a45176;margin:0 0 26px}.buttons{display:flex;flex-direction:column;gap:13px}button{border:0;border-radius:15px;padding:16px 20px;font-size:17px;font-weight:750;cursor:pointer;min-height:56px;transition:transform .18s,box-shadow .18s}button:active{transform:scale(.97)}.tomorrow{background:#ee548d;color:white;box-shadow:0 7px 16px #ee548d44}.sunday{background:#ffe1eb;color:#a72e5e}.whatsapp{background:#20b86b;color:white;width:100%;margin-top:12px}.restart{margin-top:20px;background:transparent;color:#a72e5e;text-decoration:underline;font-size:14px;padding:8px;min-height:0}.hidden{display:none}.result{animation:appear .4s ease}@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style></head>
+<body>
+<div class="heart">💕</div><div class="heart">❤️</div><div class="heart">💗</div>
+<main class="card">
+<section id="question"><div class="emoji">🥹❤️</div><h1>Vamos se ver que dia?</h1><p>Escolhe o melhor dia pra gente ficar juntinhos! 💕</p><div class="buttons"><button class="tomorrow" onclick="answer('Amanhã')">Amanhã 💖</button><button class="sunday" onclick="answer('Domingo')">Domingo 💕</button></div></section>
+<section id="time" class="hidden result" aria-live="polite"><div class="emoji">💞🕒</div><h1>Que horário é melhor pra você?</h1><p id="chosenDay"></p><div class="buttons"><button class="tomorrow" onclick="chooseTime('Manhã')">MANHÃ ☀️</button><button class="sunday" onclick="chooseTime('Tarde')">TARDE 🌷</button><button class="tomorrow" onclick="chooseTime('Noite')">NOITE 🌙</button></div><button class="restart" onclick="restart()">← Trocar o dia</button></section>
+<section id="result" class="hidden result" aria-live="polite"><div class="emoji">😍💗</div><h1>Combinado! ❤️</h1><p id="message"></p><button class="whatsapp" onclick="sendWhatsApp()">📲 Enviar minha resposta pelo WhatsApp</button><p style="font-size:13px;margin:12px 0 0">O WhatsApp abrirá com a mensagem pronta. É só confirmar o envio. 💕</p><button class="restart" onclick="restart()">Escolher novamente ↩</button></section>
+</main>
+<script>
+let selectedDay = '';
+let selectedTime = '';
+function show(id){for(const section of document.querySelectorAll('main section'))section.classList.add('hidden');document.getElementById(id).classList.remove('hidden');}
+function answer(day){selectedDay=day;document.getElementById('chosenDay').textContent='Você escolheu '+day+'! 🥰 Agora me conta qual período prefere. 💕';show('time');}
+function chooseTime(time){selectedTime=time;document.getElementById('message').textContent='Você escolheu '+selectedDay+' de '+selectedTime.toLowerCase()+'! 🥹💕 Envie sua escolha para combinarmos direitinho.';show('result');}
+function sendWhatsApp(){const message='Oi! ❤️ Quero te ver '+selectedDay+' de '+selectedTime.toLowerCase()+'! 🥰💕';const url='https://wa.me/5571991349915?text='+encodeURIComponent(message);window.open(url,'_blank','noopener,noreferrer');}
+function restart(){selectedDay='';selectedTime='';show('question');}
+</script></body></html>

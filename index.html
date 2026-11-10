@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contador de Saudades ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(145deg,#ffe1ea,#fff4f7 55%,#ffd4e2);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#8c2451;padding:20px}.card{width:min(100%,520px);background:#ffffffd9;border:1px solid #fff;border-radius:28px;padding:40px 24px;text-align:center;box-shadow:0 20px 60px #b53d6926}.heart{font-size:46px;animation:pulse 1.7s infinite}@keyframes pulse{50%{transform:scale(1.15)}}h1{font-size:clamp(25px,6vw,36px);margin:16px 0 8px}.sub{color:#a75a78;margin:0 0 28px}.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.unit{background:#ffe7ef;border-radius:15px;padding:18px 4px}.number{font-size:clamp(23px,6vw,38px);font-weight:800;font-variant-numeric:tabular-nums}.label{font-size:12px;color:#9e5571}.message{margin-top:30px;line-height:1.6;font-style:italic;color:#9c4a6d}.since{font-size:13px;color:#a75a78;margin-top:25px}@media(max-width:350px){.card{padding:30px 14px}.counter{gap:5px}.unit{padding:14px 2px}.label{font-size:10px}}
+</style>
+</head>
+<body><main class="card"><div class="heart">❤️</div><h1>Contador de Saudades</h1><p class="sub">O tempo passa, mas a saudade continua...</p><section class="counter" aria-label="Tempo de saudade"><div class="unit"><div class="number" id="days">0</div><div class="label">dias</div></div><div class="unit"><div class="number" id="hours">00</div><div class="label">horas</div></div><div class="unit"><div class="number" id="minutes">00</div><div class="label">minutos</div></div><div class="unit"><div class="number" id="seconds">00</div><div class="label">segundos</div></div></section><p class="message">“Cada segundo que passa é mais um segundo sentindo sua falta.” 💕</p><p class="since">Contando desde 14 de outubro de 2026 💌</p></main>
+<script>
+// Início: 14 de outubro de 2026, 00h, horário de Brasília.
+const start=Date.parse('2026-10-14T00:00:00-03:00');
+const pad=n=>String(n).padStart(2,'0');
+function update(){let s=Math.max(0,Math.floor((Date.now()-start)/1000));document.getElementById('days').textContent=Math.floor(s/86400);s%=86400;document.getElementById('hours').textContent=pad(Math.floor(s/3600));s%=3600;document.getElementById('minutes').textContent=pad(Math.floor(s/60));document.getElementById('seconds').textContent=pad(s%60)}
+update();setInterval(update,1000);
+</script></body></html>
